@@ -1,0 +1,15 @@
+
+### test on p096_sudoku
+# Memory
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),2015.83,29.68,31.27
+Assignments,24493,331,84
+Backtracks,24441,0,0
+Memory Usage (MB),0.00,0.02,0.02
+# No memory 
+
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),756.45,11.32,10.92
+Assignments,24493,331,84
+Backtracks,24441,0,0
+Memory Usage (MB),0.00,0.00,0.00

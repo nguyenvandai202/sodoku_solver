@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Sudoku solver"""
+"""Sudoku solver using constraint propagation and depth-first search"""
 
 #
 # author: Hena Kauser
@@ -38,15 +38,49 @@
 
 import argparse
 import csv
+import time
+import psutil
+import os
+from typing import List, Dict, Any
 
+
+def load_puzzles(input_file):
+    """Return a list of Sudoku puzzles as dictionaries"""
+    puzzles = []
+    current_grid = []
+    
+    for line in input_file:
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith('Grid'):
+            if current_grid:
+                puzzles.append(dict(zip(SQUARES, ''.join(current_grid))))
+            current_grid = []
+        else:
+            current_grid.append(line)
+    
+    # Add the last grid
+    if current_grid:
+        puzzles.append(dict(zip(SQUARES, ''.join(current_grid))))
+    
+    return puzzles
 
 def load_puzzle(input_file):
-    """Return the Sudoku puzzle as a dictionary"""
-    puzzle = []
-    for row in csv.reader(input_file):
-        for column in row:
-            puzzle.append(column)
-    return dict(zip(SQUARES, puzzle))
+    """Return a single Sudoku puzzle as a dictionary (legacy support)"""
+    if hasattr(input_file, 'readlines'):  # Text file input
+        grid = []
+        for line in input_file:
+            line = line.strip()
+            if line and not line.startswith('Grid'):
+                grid.append(line)
+        return dict(zip(SQUARES, ''.join(grid)))
+    else:  # CSV input (legacy support)
+        puzzle = []
+        for row in csv.reader(input_file):
+            for column in row:
+                puzzle.append(column)
+        return dict(zip(SQUARES, puzzle))
 
 
 def save_solution(solution, output_file):
@@ -57,14 +91,25 @@ def save_solution(solution, output_file):
     writer = csv.writer(output_file, delimiter=',')
     writer.writerows(solution)
 
+def save_solutions(solutions, output_file):
+    """Save multiple Sudoku solutions to a file"""
+    for i, solution in enumerate(solutions, 1):
+        output_file.write(f"Grid {i:02d}\n")
+        grid = dict_to_2d_list(solution)
+        for row in grid:
+            output_file.write(''.join(row) + '\n')
+        output_file.write('\n')
+
 
 def getopts():
     """Parse the command line arguments"""
     parser = argparse.ArgumentParser()
     parser.add_argument("-i", "--input", type=argparse.FileType('r'),
-                        required=True, help="input file (.csv)")
+                        required=True, help="input file (.txt or .csv)")
     parser.add_argument("-o", "--output", type=argparse.FileType('w'),
-                        required=True, help="output file (.csv)")
+                        required=True, help="output file (.txt or .csv)")
+    parser.add_argument("--csv", action="store_true",
+                        help="Use CSV format for input/output (legacy mode)")
     return parser.parse_args()
 
 
@@ -110,7 +155,7 @@ def test():
                            'D4', 'D5', 'D6',
                            'E4', 'E5', 'E6',
                            'A5', 'B5', 'C5', 'G5', 'H5', 'I5'}
-    print 'Test results: pass'
+    print ('Test results: pass')
 
 ALLOWED_NUMBERS = '123456789'
 
@@ -185,24 +230,24 @@ def propagate_constraints(puzzle, board):
 
 
 def assign_value(board, square, value):
-    """Assign value to square by deleting all values other than value from
-    board[square]. Then delete value from all other squares in this
-    square's unit."""
+    global cp_assignments, cp_backtracks
+    cp_assignments += 1  # Increment assignment counter
     values_to_eliminate = board[square].replace(value, '')
     if all(remove_value(board, square, val) for val in values_to_eliminate):
         return board
     else:
-        # Push failure up the call stack
+        cp_backtracks += 1  # Increment backtrack counter on contradiction
         return False
 
 
 def remove_value(board, square, value_to_eliminate):
-    """Delete value from board[square].
+    global cp_backtracks
+    # Delete value from board[square].
 
-    Local consistency conditions:
-    1. If a square has only one possible value then remove value from peers
-    2. If only one square in a unit can have a value then assign the value to
-    that square"""
+    # Local consistency conditions:
+    # 1. If a square has only one possible value then remove value from peers
+    # 2. If only one square in a unit can have a value then assign the value to
+    # that square"""
 
     # Return immediately if the value to eliminate has already been removed
     # from board[square]
@@ -215,17 +260,13 @@ def remove_value(board, square, value_to_eliminate):
     # 1) If the square has only one value, then remove the values from all of
     #    square's peers.
     if len(board[square]) == 0:
-        # board[square] has no values, therefore we cannot solve the puzzle
+        cp_backtracks += 1  # Increment backtrack counter on contradiction
         return False
     elif len(board[square]) == 1:
-        # If board[square] has only one value left (ie this is the only possible
-        # value for board[square]), then recursively remove this value from all
-        # of board[square]'s peers.
         final_value = board[square]
         if not all(remove_value(board, peer, final_value)
                    for peer in PEERS[square]):
-            # Push failure up the call stack if we were not able to remove
-            # board[square]'s final value from it's peers.
+            cp_backtracks += 1  # Increment backtrack counter on contradiction
             return False
 
     # 2) If there is only one square within a unit where a value can be set,
@@ -236,40 +277,37 @@ def remove_value(board, square, value_to_eliminate):
         # that contain value_to_eliminate
         unit_squares = [sq for sq in unit if value_to_eliminate in board[sq]]
         if len(unit_squares) == 0:
-            # Push failure up the call stack. This is a failure b/c no member of
-            # the unit contains value_to_eliminate which violates the constraint
-            # that each of ALLOWED_NUMBERS must be in exactly 1 square within
-            # each unit.
+            cp_backtracks += 1  # Increment backtrack counter on contradiction
             return False
         elif len(unit_squares) == 1:
-            # value_to_eliminate can only be in one square in the unit, which
-            # is where we will assign value_to_eliminate.
             if not assign_value(board, unit_squares[0], value_to_eliminate):
+                cp_backtracks += 1  # Increment backtrack counter on contradiction
                 return False
     return board
 
 
-def depth_first_search(board):
-    """Depth first search. First, find a square with the fewest remaining
-    values, then try to assign each value and check if we found a solution."""
-    if board is False:
+def depth_first_search(values):
+    # Add global counters for assignments and backtracks
+    if not hasattr(depth_first_search, 'assignments'):
+        depth_first_search.assignments = 0
+    if not hasattr(depth_first_search, 'backtracks'):
+        depth_first_search.backtracks = 0
+    if values is False:
         return False
+    if all(len(values[s]) == 1 for s in SQUARES):
+        return values
+    n, s = min((len(values[s]), s) for s in SQUARES if len(values[s]) > 1)
+    for value in values[s]:
+        depth_first_search.assignments += 1
+        result = depth_first_search(propagate_constraints({**values, s: value}, values))
+        if result:
+            return result
+        depth_first_search.backtracks += 1
+    return False
 
-    # Puzzle has already been solved, so return the solution.
-    if all(len(board[square]) == 1 for square in SQUARES):
-        return board
-
-    # dummy is min_value, but used 'dummy' as var name to prevent pylint warning
-    dummy, min_square = min((len(board[sq]), sq) for sq in SQUARES
-                            if len(board[sq]) > 1)
-
-    # Check if all constraints can be satisfied for each remaining value in
-    # min_square. The calls below eventually pass an iterable to
-    # extract_solution() where all items = False except for the solution.
-    return extract_solution(depth_first_search(assign_value(board.copy(),
-                                                            min_square,
-                                                            value))
-                            for value in board[min_square])
+# Initialize global counters
+cp_assignments = 0
+cp_backtracks = 0
 
 
 def extract_solution(search_results):
@@ -299,13 +337,31 @@ if __name__ == '__main__':
 
     CLI_ARGS = getopts()
 
-    PUZZLE = load_puzzle(CLI_ARGS.input)
-
-    DEFAULT_BOARD = generate_board()
-
-    SOLUTION = depth_first_search(propagate_constraints(PUZZLE, DEFAULT_BOARD))
-
-    if SOLUTION is not False:
-        save_solution(dict_to_2d_list(SOLUTION), CLI_ARGS.output)
+    if CLI_ARGS.csv:
+        # Legacy CSV mode
+        PUZZLE = load_puzzle(CLI_ARGS.input)
+        DEFAULT_BOARD = generate_board()
+        SOLUTION = depth_first_search(propagate_constraints(PUZZLE, DEFAULT_BOARD))
+        
+        if SOLUTION is not False:
+            save_solution(dict_to_2d_list(SOLUTION), CLI_ARGS.output)
+        else:
+            print('Unable to find solution to Sudoku puzzle.')
     else:
-        print 'Unable to find solution to Sudoku puzzle.'
+        # New text file mode with multiple grids
+        PUZZLES = load_puzzles(CLI_ARGS.input)
+        SOLUTIONS = []
+        
+        for i, puzzle in enumerate(PUZZLES, 1):
+            DEFAULT_BOARD = generate_board()
+            solution = depth_first_search(propagate_constraints(puzzle, DEFAULT_BOARD))
+            
+            if solution is not False:
+                SOLUTIONS.append(solution)
+                print(f'Solved Grid {i}')
+            else:
+                print(f'Unable to find solution to Grid {i}')
+        
+        if SOLUTIONS:
+            save_solutions(SOLUTIONS, CLI_ARGS.output)
+            print(f'Successfully solved {len(SOLUTIONS)} out of {len(PUZZLES)} puzzles')

@@ -26,32 +26,6 @@ algorithm by Peter Norwig.
 [Solving Every Sudoku Puzzle](http://norvig.com/sudoku.html).
 
 
-# Algorithm
-
-## Satisfy constraints
-
-The constraint satisfaction algorithm iterates through each square and checks
-if a value is assigned via the puzzle (input). It then applies the following
-constraints to assign valid values and eliminate invalid values from the board:
-
-1. If a square has only one possible value then remove the value from peer
-   squares
-2. If only one square in a unit can have a value then put the value there
-
-![Constraint satisfaction](constraint_propagation.jpg "Constraint satisfaction")
-
-## Depth first search
-
-Satisfying all constraints may or may not have solved the Sudoku. As a next step,
-a depth first search using the smallest number of possibilities is performed.
-The goal is to quickly reduce the number of possible solutions. This results
-in faster code execution times and lower CPU load.
-
-![Depth first search](depth_first_search.jpg "Depth first search")
-
-The credit must go to Peter Norvig for this algorithm.
-I merely reimplemented his work and stepped into the logic to ensure that I
-could both understand and implement the algorithm.
 
 
 # Summary
@@ -60,7 +34,13 @@ You can view the final code in [sudoku.py](sudoku.py). Use the following command
 to run to solve the example puzzles:
 
 ```bash
-python sudoku.py -i puzzle/test.csv -o solution/test.csv
+python sudoku_optimized.py -i test_hard_and_unsolvable_puzzles.txt -o optimized_solver_output.txt
+
+python sudoku.py -i test_hard_and_unsolvable_puzzles.txt -o original_solver_output.txt
+
+python sudoku_optimized.py -i test_hard_and_unsolvable_puzzles.txt -o optimized_solver_output.txt
+
+python sudoku_benchmark.py
 ```
 
 
