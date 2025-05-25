@@ -8,8 +8,29 @@ Backtracks,24441,0,0
 Memory Usage (MB),0.00,0.02,0.02
 # No memory 
 
+
 Metric,Backtracking,Constraint Propagation,Optimized
-Execution Time (ms),756.45,11.32,10.92
+Execution Time (ms),412.40,3.12,6.82
 Assignments,24493,331,84
 Backtracks,24441,0,0
 Memory Usage (MB),0.00,0.00,0.00
+# memory
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),1777.20,30.84,29.08
+Assignments,24493,331,85
+Backtracks,24441,0,0
+Memory Usage (MB),0.00,0.02,0.02
+## 52 bai 
+# nomemory
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),425.04,5.33,6.37
+Assignments,23689,331,85
+Backtracks,23636,0,0
+Memory Usage (MB),0.00,0.00,0.00
+# memory
+
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),1689.80,27.35,23.61
+Assignments,23689,331,84
+Backtracks,23636,0,0
+Memory Usage (MB),0.00,0.02,0.02

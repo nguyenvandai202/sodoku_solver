@@ -58,8 +58,6 @@ def fill_missing_metrics():
     # Define the file paths for categorized puzzles
     puzzle_files = {
         "Dễ": "classified_puzzles/easy_puzzles.txt",
-        "Trung bình": "classified_puzzles/medium_puzzles.txt",
-        "Khó": "classified_puzzles/hard_puzzles.txt",
         "Siêu khó": "classified_puzzles/extreme_puzzles.txt",
     }
 

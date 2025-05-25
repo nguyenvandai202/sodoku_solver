@@ -34,11 +34,11 @@ You can view the final code in [sudoku.py](sudoku.py). Use the following command
 to run to solve the example puzzles:
 
 ```bash
-python sudoku_optimized.py -i test_hard_and_unsolvable_puzzles.txt -o optimized_solver_output.txt
+
 
 python sudoku.py -i test_hard_and_unsolvable_puzzles.txt -o original_solver_output.txt
 
-python sudoku_optimized.py -i test_hard_and_unsolvable_puzzles.txt -o optimized_solver_output.txt
+sudoku_cp_backtracking.py -i test_hard_and_unsolvable_puzzles.txt -o optimized_solver_output.txt
 
 python sudoku_benchmark.py
 ```

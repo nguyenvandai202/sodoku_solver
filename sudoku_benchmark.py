@@ -180,8 +180,8 @@ def load_puzzles(filename: str) -> List[List[List[int]]]:
 
 def main():
     # Đổi enable_memory thành False để tắt đo memory, True để bật đo memory
-    benchmark = SudokuBenchmark(enable_memory=False)
-    puzzles = load_puzzles('p096_sudoku.txt')
+    benchmark = SudokuBenchmark(enable_memory=True)
+    puzzles = load_puzzles('test_hard_and_unsolvable_puzzles.txt')
     
     print("Running benchmarks...")
     print(f"Total puzzles: {len(puzzles)}")
@@ -217,8 +217,8 @@ def main():
                   f"Backtracks: {metrics_opt.backtracks}")
     
     # Save results
-    benchmark.save_results('benchmark_results.csv')
-    print("\nResults saved to benchmark_results.csv")
+    benchmark.save_results('results_test_hard_and_unsolvable_puzzles.csv')
+    print("\nResults saved to test_hard_and_unsolvable_puzzles.csv")
 
 if __name__ == '__main__':
     main()

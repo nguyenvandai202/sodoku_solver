@@ -1,0 +1,3 @@
+# Medium Sudoku Puzzles (Lewis 2007 Classification)
+# Total puzzles: 0
+

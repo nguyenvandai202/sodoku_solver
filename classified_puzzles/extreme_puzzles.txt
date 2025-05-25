@@ -1,10 +1,10 @@
 # Extreme Sudoku Puzzles (Lewis 2007 Classification)
-# Total puzzles: 10
+# Total puzzles: 11
 
 Grid 06
 # Backtrack count: 7
 # CP percentage: 22.8%
-# Solve time: 0.0101s
+# Solve time: 0.0247s
 100920000
 524010000
 000000070
@@ -18,7 +18,7 @@ Grid 06
 Grid 07
 # Backtrack count: 1
 # CP percentage: 18.2%
-# Solve time: 0.0036s
+# Solve time: 0.0163s
 043080250
 600000000
 000001094
@@ -32,7 +32,7 @@ Grid 07
 Grid 10
 # Backtrack count: 6
 # CP percentage: 7.5%
-# Solve time: 0.0052s
+# Solve time: 0.0256s
 001900003
 900700160
 030005007
@@ -46,7 +46,7 @@ Grid 10
 Grid 25
 # Backtrack count: 1
 # CP percentage: 24.5%
-# Solve time: 0.0011s
+# Solve time: 0.0151s
 360020089
 000361000
 000000000
@@ -60,7 +60,7 @@ Grid 25
 Grid 42
 # Backtrack count: 2
 # CP percentage: 23.6%
-# Solve time: 0.0047s
+# Solve time: 0.0031s
 380000000
 000400785
 009020300
@@ -74,7 +74,7 @@ Grid 42
 Grid 43
 # Backtrack count: 1
 # CP percentage: 18.2%
-# Solve time: 0.0075s
+# Solve time: 0.0123s
 000158000
 002060800
 030000040
@@ -88,7 +88,7 @@ Grid 43
 Grid 47
 # Backtrack count: 2
 # CP percentage: 13.8%
-# Solve time: 0.0081s
+# Solve time: 0.0063s
 000700800
 006000031
 040002000
@@ -102,7 +102,7 @@ Grid 47
 Grid 48
 # Backtrack count: 2
 # CP percentage: 37.5%
-# Solve time: 0.0078s
+# Solve time: 0.0164s
 001007090
 590080001
 030000080
@@ -116,7 +116,7 @@ Grid 48
 Grid 49
 # Backtrack count: 2
 # CP percentage: 8.5%
-# Solve time: 0.0040s
+# Solve time: 0.0000s
 000003017
 015009008
 060000000
@@ -130,7 +130,7 @@ Grid 49
 Grid 50
 # Backtrack count: 4
 # CP percentage: 28.6%
-# Solve time: 0.0055s
+# Solve time: 0.0168s
 300200000
 000107000
 706030500
@@ -140,4 +140,18 @@ Grid 50
 009040301
 000702000
 000008006
+
+Grid 52
+# Backtrack count: 33
+# CP percentage: 0.0%
+# Solve time: 0.0165s
+000000001
+000000002
+000000003
+000000004
+000000005
+000000006
+000000007
+000000008
+000000009
 

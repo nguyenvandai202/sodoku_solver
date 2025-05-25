@@ -1,10 +1,10 @@
 # Easy Sudoku Puzzles (Lewis 2007 Classification)
-# Total puzzles: 40
+# Total puzzles: 41
 
 Grid 01
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0000s
+# Solve time: 0.0104s
 003020600
 900305001
 001806400
@@ -18,7 +18,7 @@ Grid 01
 Grid 02
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0000s
+# Solve time: 0.0102s
 200080300
 060070084
 030500209
@@ -32,7 +32,7 @@ Grid 02
 Grid 03
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0216s
+# Solve time: 0.0120s
 000000907
 000420180
 000705026
@@ -46,7 +46,7 @@ Grid 03
 Grid 04
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0121s
+# Solve time: 0.0153s
 030050040
 008010500
 460000012
@@ -60,7 +60,7 @@ Grid 04
 Grid 05
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0044s
+# Solve time: 0.0065s
 020810740
 700003100
 090002805
@@ -74,7 +74,7 @@ Grid 05
 Grid 08
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0092s
+# Solve time: 0.0074s
 480006902
 002008001
 900370060
@@ -88,7 +88,7 @@ Grid 08
 Grid 09
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0131s
+# Solve time: 0.0000s
 000900002
 050123400
 030000160
@@ -102,7 +102,7 @@ Grid 09
 Grid 11
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0084s
+# Solve time: 0.0057s
 000125400
 008400000
 420800000
@@ -116,7 +116,7 @@ Grid 11
 Grid 12
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0075s
+# Solve time: 0.0016s
 062340750
 100005600
 570000040
@@ -130,7 +130,7 @@ Grid 12
 Grid 13
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0057s
+# Solve time: 0.0156s
 300000000
 005009000
 200504000
@@ -144,7 +144,7 @@ Grid 13
 Grid 14
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0040s
+# Solve time: 0.0096s
 630000000
 000500008
 005674000
@@ -158,7 +158,7 @@ Grid 14
 Grid 15
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0098s
+# Solve time: 0.0000s
 000020040
 008035000
 000070602
@@ -172,7 +172,7 @@ Grid 15
 Grid 16
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0039s
+# Solve time: 0.0152s
 361025900
 080960010
 400000057
@@ -186,7 +186,7 @@ Grid 16
 Grid 17
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0069s
+# Solve time: 0.0021s
 050807020
 600010090
 702540006
@@ -200,7 +200,7 @@ Grid 17
 Grid 18
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0049s
+# Solve time: 0.0000s
 080005000
 000003457
 000070809
@@ -214,7 +214,7 @@ Grid 18
 Grid 19
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0037s
+# Solve time: 0.0156s
 003502900
 000040000
 106000305
@@ -228,7 +228,7 @@ Grid 19
 Grid 20
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0056s
+# Solve time: 0.0133s
 000000000
 009805100
 051907420
@@ -256,7 +256,7 @@ Grid 21
 Grid 22
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0104s
+# Solve time: 0.0124s
 005000006
 070009020
 000500107
@@ -270,7 +270,7 @@ Grid 22
 Grid 23
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0079s
+# Solve time: 0.0134s
 040000050
 001943600
 009000300
@@ -284,7 +284,7 @@ Grid 23
 Grid 24
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0040s
+# Solve time: 0.0021s
 004000000
 000030002
 390700080
@@ -298,7 +298,7 @@ Grid 24
 Grid 26
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0113s
+# Solve time: 0.0007s
 500400060
 009000800
 640020000
@@ -312,7 +312,7 @@ Grid 26
 Grid 27
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0069s
+# Solve time: 0.0167s
 007256400
 400000005
 010030060
@@ -326,7 +326,7 @@ Grid 27
 Grid 28
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0082s
+# Solve time: 0.0000s
 000000000
 079050180
 800000007
@@ -340,7 +340,7 @@ Grid 28
 Grid 29
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0040s
+# Solve time: 0.0170s
 030000080
 009000500
 007509200
@@ -354,7 +354,7 @@ Grid 29
 Grid 30
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0039s
+# Solve time: 0.0174s
 200170603
 050000100
 000006079
@@ -368,7 +368,7 @@ Grid 30
 Grid 31
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0076s
+# Solve time: 0.0000s
 000000080
 800701040
 040020030
@@ -382,7 +382,7 @@ Grid 31
 Grid 32
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0040s
+# Solve time: 0.0024s
 000000085
 000210009
 960080100
@@ -396,7 +396,7 @@ Grid 32
 Grid 33
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0036s
+# Solve time: 0.0168s
 608070502
 050608070
 002000300
@@ -410,7 +410,7 @@ Grid 33
 Grid 34
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0073s
+# Solve time: 0.0078s
 050010040
 107000602
 000905000
@@ -438,7 +438,7 @@ Grid 35
 Grid 36
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0046s
+# Solve time: 0.0059s
 006080300
 049070250
 000405000
@@ -452,7 +452,7 @@ Grid 36
 Grid 37
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0082s
+# Solve time: 0.0121s
 005080700
 700204005
 320000084
@@ -466,7 +466,7 @@ Grid 37
 Grid 38
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0030s
+# Solve time: 0.0044s
 000900800
 128006400
 070800060
@@ -480,7 +480,7 @@ Grid 38
 Grid 39
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0046s
+# Solve time: 0.0106s
 000080000
 270000054
 095000810
@@ -494,7 +494,7 @@ Grid 39
 Grid 40
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0078s
+# Solve time: 0.0051s
 000602000
 400050001
 085010620
@@ -508,7 +508,7 @@ Grid 40
 Grid 41
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0050s
+# Solve time: 0.0124s
 000900002
 050123400
 030000160
@@ -522,7 +522,7 @@ Grid 41
 Grid 44
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0030s
+# Solve time: 0.0045s
 010500200
 900001000
 002008030
@@ -536,7 +536,7 @@ Grid 44
 Grid 45
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0000s
+# Solve time: 0.0120s
 080000040
 000469000
 400000007
@@ -550,7 +550,7 @@ Grid 45
 Grid 46
 # Backtrack count: 0
 # CP percentage: 100.0%
-# Solve time: 0.0117s
+# Solve time: 0.0144s
 904200007
 010000000
 000706500
@@ -560,4 +560,18 @@ Grid 46
 001607000
 000000030
 300005702
+
+Grid 51
+# Backtrack count: 0
+# CP percentage: 100.0%
+# Solve time: 0.0164s
+530070000
+600195000
+098000060
+800060003
+400803001
+700020006
+060000280
+000419005
+000080070
 
