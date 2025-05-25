@@ -9,4 +9,16 @@ Metric,Backtracking,Constraint Propagation,Optimized
 Execution Time (ms),54.98,4.49,2.02
 Assignments,3588,330,84
 Backtracks,3526,0,0
+# Grid 02 (nomemory)
 Memory Usage (MB),0.00,0.00,0.00
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),1.99,4.00,3.72
+Assignments,189,331,85
+Backtracks,117,0,0
+Memory Usage (MB),0.00,0.00,0.00
+# Grid 02 (memory)
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),8.02,34.25,29.39
+Assignments,189,331,85
+Backtracks,117,0,0
+Memory Usage (MB),0.01,0.02,0.02
