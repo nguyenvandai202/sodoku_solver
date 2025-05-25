@@ -180,7 +180,7 @@ def load_puzzles(filename: str) -> List[List[List[int]]]:
 
 def main():
     # Đổi enable_memory thành False để tắt đo memory, True để bật đo memory
-    benchmark = SudokuBenchmark(enable_memory=True)
+    benchmark = SudokuBenchmark(enable_memory=False)
     puzzles = load_puzzles('test_hard_and_unsolvable_puzzles.txt')
     
     print("Running benchmarks...")

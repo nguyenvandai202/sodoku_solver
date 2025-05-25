@@ -1,5 +1,12 @@
+# Memory
 Metric,Backtracking,Constraint Propagation,Optimized
 Execution Time (ms),254.04,20.93,33.80
 Assignments,3588,330,86
 Backtracks,3526,0,0
 Memory Usage (MB),0.00,0.02,0.03
+# no memory 
+Metric,Backtracking,Constraint Propagation,Optimized
+Execution Time (ms),54.98,4.49,2.02
+Assignments,3588,330,84
+Backtracks,3526,0,0
+Memory Usage (MB),0.00,0.00,0.00
